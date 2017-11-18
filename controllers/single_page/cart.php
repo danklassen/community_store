@@ -1,6 +1,7 @@
 <?php
 namespace Concrete\Package\CommunityStore\Controller\SinglePage;
 
+use Request;
 use PageController;
 use Config;
 
@@ -188,7 +189,7 @@ class Cart extends PageController
 
     public function clear()
     {
-        if ($this->post()) {
+        if (Request::isPost()) {
             StoreCart::clear();
             $returndata = array('success' => true, 'action' => 'clear');
             echo json_encode($returndata);
